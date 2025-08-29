@@ -1,5 +1,6 @@
 import Dictionary from "../../assets/svg/Dictionary.svg?react";
 import FontDropdown from "./FontDropdown";
+import Input from "./Input";
 import ThemeSwitcher from "./ThemeSwitcher";
 
 const Header = () => {
@@ -12,6 +13,7 @@ const Header = () => {
         <FontDropdown />
         <ThemeSwitcher />
       </div>
+      <Input />
     </div>
   );
 };
