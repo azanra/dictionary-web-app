@@ -14,9 +14,10 @@ const useGetDictionary = () => {
       const [firstResult] = result;
       console.log(result);
       setData(firstResult);
-      setIsLoading(false);
     } catch (error) {
       setError(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
