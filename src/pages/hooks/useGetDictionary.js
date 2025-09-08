@@ -11,7 +11,9 @@ const useGetDictionary = () => {
         `https://api.dictionaryapi.dev/api/v2/entries/en/${keyword}`
       );
       const result = await response.json();
-      setData(result);
+      const [firstResult] = result;
+      console.log(result);
+      setData(firstResult);
       setIsLoading(false);
     } catch (error) {
       setError(error);

@@ -3,7 +3,7 @@ import FontDropdown from "./FontDropdown";
 import Input from "./Input";
 import ThemeSwitcher from "./ThemeSwitcher";
 
-const Header = () => {
+const Header = ({ keyword, setKeyword, fetchDictionary }) => {
   return (
     <div>
       <div>
@@ -13,7 +13,11 @@ const Header = () => {
         <FontDropdown />
         <ThemeSwitcher />
       </div>
-      <Input />
+      <Input
+        keyword={keyword}
+        setKeyword={setKeyword}
+        fetchDictionary={fetchDictionary}
+      />
     </div>
   );
 };
