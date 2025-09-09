@@ -15,7 +15,9 @@ function App() {
         setKeyword={setKeyword}
         fetchDictionary={fetchDictionary}
       />
-      {error === null && !isLoading && <Body data={data} />}
+      {(isLoading && <p>Fetching the data...</p>) ||
+        (error && <p>Error when fetching the data!</p>) ||
+        (data && error === null && <Body data={data} />)}
     </div>
   );
 }

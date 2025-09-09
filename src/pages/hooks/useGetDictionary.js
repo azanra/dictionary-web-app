@@ -3,10 +3,11 @@ import { useState } from "react";
 const useGetDictionary = () => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const fetchDictionary = async (keyword) => {
     try {
+      setIsLoading(true);
       const response = await fetch(
         `https://api.dictionaryapi.dev/api/v2/entries/en/${keyword}`
       );
