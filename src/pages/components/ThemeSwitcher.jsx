@@ -3,9 +3,9 @@ import IconMoon from "../../assets/svg/IconMoon.svg?react";
 const ThemeSwitcher = () => {
   return (
     <div>
-      <label>
+      <label className="switch">
         <input type="checkbox" />
-        <span></span>
+        <span className="slider"></span>
       </label>
       <IconMoon />
     </div>
