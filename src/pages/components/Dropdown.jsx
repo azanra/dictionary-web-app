@@ -31,5 +31,17 @@ export const DropdownMenuItem = ({ children }) => {
 };
 
 export const DropdownMenuItems = ({ children, onClick }) => {
-  return <div onClick={onClick}>{children}</div>;
+  const isShown = useContext(DropdownShownContext);
+  const setIsShown = useContext(DropdownShownSetterContext);
+
+  return (
+    <div
+      onClick={() => {
+        setIsShown(!isShown);
+        onClick();
+      }}
+    >
+      {children}
+    </div>
+  );
 };
