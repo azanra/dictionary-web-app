@@ -7,20 +7,27 @@ import {
 
 import ArrowDown from "../../assets/svg/ArrowDown.svg?react";
 
-const FontDropdown = () => {
+const FontDropdown = ({ setCurrentFont, currentFont }) => {
   const fonts = ["Sans Serif", "Serif", "Monospace"];
   return (
     <>
       <Dropdown>
         <DropdownTrigger>
           <div>
-            <p>Sans Serif</p>
+            <p>{currentFont}</p>
             <ArrowDown />
           </div>
         </DropdownTrigger>
         <DropdownMenuItem>
           {fonts.map((font) => {
-            return <DropdownMenuItems key={font}>{font}</DropdownMenuItems>;
+            return (
+              <DropdownMenuItems
+                key={font}
+                onClick={() => setCurrentFont(font)}
+              >
+                {font}
+              </DropdownMenuItems>
+            );
           })}
         </DropdownMenuItem>
       </Dropdown>
