@@ -9,6 +9,8 @@ const Header = ({
   fetchDictionary,
   setCurrentFont,
   currentFont,
+  isDark,
+  setIsDark,
 }) => {
   return (
     <div>
@@ -20,7 +22,7 @@ const Header = ({
           setCurrentFont={setCurrentFont}
           currentFont={currentFont}
         />
-        <ThemeSwitcher />
+        <ThemeSwitcher isDark={isDark} setIsDark={setIsDark} />
       </div>
       <Input
         keyword={keyword}
