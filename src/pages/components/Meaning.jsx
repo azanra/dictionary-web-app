@@ -1,15 +1,21 @@
-const Meaning = ({ data }) => {
+const Meaning = ({ data, fetchDictionary }) => {
   const { meanings } = data;
   return (
     <div>
       {meanings.map((speech, index) => {
-        return <MeaningItem speech={speech} key={index} />;
+        return (
+          <MeaningItem
+            speech={speech}
+            key={index}
+            fetchDictionary={fetchDictionary}
+          />
+        );
       })}
     </div>
   );
 };
 
-const MeaningItem = ({ speech }) => {
+const MeaningItem = ({ speech, fetchDictionary }) => {
   const { partOfSpeech, definitions, synonyms, antonyms } = speech;
   return (
     <div>
@@ -31,14 +37,22 @@ const MeaningItem = ({ speech }) => {
           })}
         </ul>
       </div>
-      <MeaningItems meaning={synonyms} meaningType="Synonyms" />
-      <MeaningItems meaning={antonyms} meaningType="Antonyms" />
+      <MeaningItems
+        meaning={synonyms}
+        meaningType="Synonyms"
+        fetchDictionary={fetchDictionary}
+      />
+      <MeaningItems
+        meaning={antonyms}
+        meaningType="Antonyms"
+        fetchDictionary={fetchDictionary}
+      />
       <hr />
     </div>
   );
 };
 
-const MeaningItems = ({ meaning, meaningType }) => {
+const MeaningItems = ({ meaning, meaningType, fetchDictionary }) => {
   return (
     <>
       {meaning && meaning.length > 0 && (
@@ -46,7 +60,12 @@ const MeaningItems = ({ meaning, meaningType }) => {
           <p>{meaningType}</p>
           <div>
             {meaning.map((mean, index) => {
-              return <button key={index}> {mean}</button>;
+              return (
+                <button onClick={() => fetchDictionary(mean)} key={index}>
+                  {" "}
+                  {mean}
+                </button>
+              );
             })}
           </div>
         </div>

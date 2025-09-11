@@ -35,7 +35,9 @@ function App() {
         />
         {(isLoading && <p>Fetching the data...</p>) ||
           (error && <p>Error when fetching the data!</p>) ||
-          (data && error === null && <Body data={data} />)}
+          (data && error === null && (
+            <Body data={data} fetchDictionary={fetchDictionary} />
+          ))}
       </div>
     </IsDarkContext>
   );
