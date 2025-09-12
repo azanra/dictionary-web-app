@@ -23,21 +23,27 @@ function App() {
 
   return (
     <IsDarkContext value={isDark}>
-      <div className={getCurrentFont()}>
-        <Header
-          keyword={keyword}
-          setKeyword={setKeyword}
-          fetchDictionary={fetchDictionary}
-          setCurrentFont={setCurrentFont}
-          currentFont={currentFont}
-          isDark={isDark}
-          setIsDark={setIsDark}
-        />
-        {(isLoading && <p>Fetching the data...</p>) ||
-          (error && <p>Error when fetching the data!</p>) ||
-          (data && error === null && (
-            <Body data={data} fetchDictionary={fetchDictionary} />
-          ))}
+      <div
+        className={`${isDark ? "bg-black text-white" : "bg-white text-black"}`}
+      >
+        <div className={`${getCurrentFont()} flex justify-center`}>
+          <div className="w-[40%]">
+            <Header
+              keyword={keyword}
+              setKeyword={setKeyword}
+              fetchDictionary={fetchDictionary}
+              setCurrentFont={setCurrentFont}
+              currentFont={currentFont}
+              isDark={isDark}
+              setIsDark={setIsDark}
+            />
+            {(isLoading && <p>Fetching the data...</p>) ||
+              (error && <p>Error when fetching the data!</p>) ||
+              (data && error === null && (
+                <Body data={data} fetchDictionary={fetchDictionary} />
+              ))}
+          </div>
+        </div>
       </div>
     </IsDarkContext>
   );
