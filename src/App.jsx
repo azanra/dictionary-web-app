@@ -4,6 +4,7 @@ import Body from "./pages/components/Body";
 import Header from "./pages/components/Header";
 import useGetDictionary from "./pages/hooks/useGetDictionary";
 import { IsDarkContext } from "./pages/hooks/IsDarkContext";
+import dictionaryUtils from "./pages/utils/dictionaryUtils";
 
 function App() {
   const [keyword, setKeyword] = useState("fire");
@@ -11,22 +12,16 @@ function App() {
   const [isDark, setIsDark] = useState(true);
   const { data, error, isLoading, fetchDictionary } = useGetDictionary();
 
-  const getCurrentFont = () => {
-    if (currentFont === "Sans Serif") {
-      return "font-sans";
-    } else if (currentFont === "Serif") {
-      return "font-serif";
-    } else {
-      return "font-mono";
-    }
-  };
-
   return (
     <IsDarkContext value={isDark}>
       <div
         className={`${isDark ? "bg-black text-white" : "bg-white text-black"}`}
       >
-        <div className={`${getCurrentFont()} flex justify-center`}>
+        <div
+          className={`${dictionaryUtils.getCurrentFont(
+            currentFont
+          )} flex justify-center`}
+        >
           <div className="w-[40%]">
             <Header
               keyword={keyword}
