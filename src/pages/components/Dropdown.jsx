@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import { IsDarkContext } from "../hooks/IsDarkContext";
 
 const DropdownShownContext = createContext(null);
 const DropdownShownSetterContext = createContext(null);
@@ -9,7 +10,7 @@ export const Dropdown = ({ children }) => {
   return (
     <DropdownShownContext value={isShown}>
       <DropdownShownSetterContext value={setIsShown}>
-        <div>{children}</div>
+        <div className="w-fit relative">{children}</div>
       </DropdownShownSetterContext>
     </DropdownShownContext>
   );
@@ -19,14 +20,27 @@ export const DropdownTrigger = ({ children }) => {
   const isShown = useContext(DropdownShownContext);
   const setIsShown = useContext(DropdownShownSetterContext);
 
-  return <div onClick={() => setIsShown(!isShown)}>{children}</div>;
+  return (
+    <div className="cursor-pointer" onClick={() => setIsShown(!isShown)}>
+      {children}
+    </div>
+  );
 };
 
 export const DropdownMenuItem = ({ children }) => {
   const isShown = useContext(DropdownShownContext);
+  const isDark = useContext(IsDarkContext);
 
   if (isShown) {
-    return <div>{children}</div>;
+    return (
+      <div
+        className={`absolute top-10 px-[32px] py-[8px] right-0 shadow-md rounded-xl ${
+          isDark && `shadow-purple-600`
+        }`}
+      >
+        {children}
+      </div>
+    );
   }
 };
 
@@ -36,6 +50,7 @@ export const DropdownMenuItems = ({ children, onClick }) => {
 
   return (
     <div
+      className="cursor-pointer"
       onClick={() => {
         setIsShown(!isShown);
         onClick();

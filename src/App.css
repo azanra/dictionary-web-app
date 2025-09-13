@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+:root {
+  --purple: #a445ed;
+}
+
 .switch {
   position: relative;
   display: inline-block;
@@ -38,7 +42,7 @@
 }
 
 .switch input:checked + .slider {
-  background-color: rgb(164 69 237);
+  background-color: var(--purple);
 }
 
 .switch input:focus + .slider {
