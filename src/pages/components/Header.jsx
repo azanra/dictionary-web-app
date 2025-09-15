@@ -13,8 +13,8 @@ const Header = ({
   setIsDark,
 }) => {
   return (
-    <div>
-      <div>
+    <div className="mb-[48px]">
+      <div className="flex items-center py-[48px]">
         <div>
           <Dictionary />
         </div>
