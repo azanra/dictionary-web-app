@@ -2,8 +2,8 @@ import IconMoon from "../../assets/svg/IconMoon.svg?react";
 
 const ThemeSwitcher = ({ isDark, setIsDark }) => {
   return (
-    <div>
-      <label className="switch">
+    <div className="flex gap-[16px]">
+      <label className="switch ml-[32px]">
         <input
           type="checkbox"
           checked={isDark}
