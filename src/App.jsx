@@ -15,7 +15,9 @@ function App() {
   return (
     <IsDarkContext value={isDark}>
       <div
-        className={`${isDark ? "bg-black text-white" : "bg-white text-black"}`}
+        className={`${
+          isDark ? "bg-black text-white" : "bg-white text-black"
+        } min-h-screen`}
       >
         <div
           className={`${dictionaryUtils.getCurrentFont(
