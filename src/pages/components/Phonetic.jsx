@@ -19,13 +19,13 @@ const Phonetic = ({ data }) => {
   };
 
   return (
-    <div>
+    <div className="flex justify-between items-center mb-[32px]">
       <div>
-        <h1>{word}</h1>
-        <p>{phonetic}</p>
+        <h1 className="font-bold text-6xl mb-[8px]">{word}</h1>
+        <p className="text-(--purple) font-semibold text-2xl">{phonetic}</p>
       </div>
       <div>
-        <button onClick={playAudio}>
+        <button onClick={playAudio} className="cursor-pointer">
           <IconPlay />
         </button>
       </div>
