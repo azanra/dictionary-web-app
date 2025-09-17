@@ -34,8 +34,14 @@ function App() {
               isDark={isDark}
               setIsDark={setIsDark}
             />
-            {(isLoading && <p>Fetching the data...</p>) ||
-              (error && <p>Error when fetching the data!</p>) ||
+            {(isLoading && (
+              <h1 className="font-bold text-xl">Fetching the data...</h1>
+            )) ||
+              (error && (
+                <h1 className="font-bold text-xl">
+                  Error when fetching the data!
+                </h1>
+              )) ||
               (data && error === null && (
                 <Body data={data} fetchDictionary={fetchDictionary} />
               ))}
