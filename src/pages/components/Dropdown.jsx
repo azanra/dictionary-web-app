@@ -35,7 +35,7 @@ export const DropdownMenuItem = ({ children }) => {
     return (
       <div
         className={`absolute top-10 px-[32px] py-[8px] right-0 shadow-md rounded-xl z-1 ${
-          isDark ? `shadow-purple-600 bg-black` : "bg-white"
+          isDark ? `shadow-purple-600 bg-[#1f1f1f]` : "bg-white"
         }`}
       >
         {children}
