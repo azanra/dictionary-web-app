@@ -1,16 +1,23 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useRef, useState } from "react";
 import { IsDarkContext } from "../hooks/IsDarkContext";
+import useClickOutside from "../hooks/useClickOutside";
 
 const DropdownShownContext = createContext(null);
 const DropdownShownSetterContext = createContext(null);
 
 export const Dropdown = ({ children }) => {
   const [isShown, setIsShown] = useState(false);
+  const wrapper = useRef(null);
+  useClickOutside(wrapper, () => {
+    setIsShown(false);
+  });
 
   return (
     <DropdownShownContext value={isShown}>
       <DropdownShownSetterContext value={setIsShown}>
-        <div className="w-fit relative">{children}</div>
+        <div className="w-fit relative" ref={wrapper}>
+          {children}
+        </div>
       </DropdownShownSetterContext>
     </DropdownShownContext>
   );
