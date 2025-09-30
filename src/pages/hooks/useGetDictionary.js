@@ -1,7 +1,8 @@
 import { useState } from "react";
+import initialData from "../../initialData";
 
 const useGetDictionary = () => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState(initialData);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 

@@ -7,7 +7,7 @@ import { IsDarkContext } from "./pages/hooks/IsDarkContext";
 import dictionaryUtils from "./pages/utils/dictionaryUtils";
 
 function App() {
-  const [keyword, setKeyword] = useState("fire");
+  const [keyword, setKeyword] = useState("keyboard");
   const [currentFont, setCurrentFont] = useState("Sans Serif");
   const [isDark, setIsDark] = useState(true);
   const { data, error, isLoading, fetchDictionary } = useGetDictionary();
