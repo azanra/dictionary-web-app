@@ -5,6 +5,7 @@ import Header from "./pages/components/Header";
 import useGetDictionary from "./pages/hooks/useGetDictionary";
 import { IsDarkContext } from "./pages/hooks/IsDarkContext";
 import dictionaryUtils from "./pages/utils/dictionaryUtils";
+import Error from "./pages/components/Error";
 
 function App() {
   const [keyword, setKeyword] = useState("keyboard");
@@ -37,11 +38,7 @@ function App() {
             {(isLoading && (
               <h1 className="font-bold text-xl">Fetching the data...</h1>
             )) ||
-              (error && (
-                <h1 className="font-bold text-xl">
-                  Error when fetching the data!
-                </h1>
-              )) ||
+              (error && <Error />) ||
               (data && error === null && (
                 <Body data={data} fetchDictionary={fetchDictionary} />
               ))}
