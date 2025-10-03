@@ -1,11 +1,18 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import IconSearch from "../../assets/svg/IconSearch.svg?react";
 import { IsDarkContext } from "../hooks/IsDarkContext";
 
 const Input = ({ keyword, setKeyword, fetchDictionary }) => {
+  const [isValid, setIsValid] = useState(true);
   const isDark = useContext(IsDarkContext);
+
   const handleSubmit = () => {
-    fetchDictionary(keyword);
+    if (keyword.length > 0) {
+      fetchDictionary(keyword);
+      setIsValid(true);
+    } else {
+      setIsValid(false);
+    }
   };
   return (
     <div>
@@ -28,6 +35,11 @@ const Input = ({ keyword, setKeyword, fetchDictionary }) => {
             <IconSearch />
           </button>
         </div>
+        {!isValid && (
+          <p className="text-red-500 ml-[8px] mt-[8px]">
+            Whoops, can't be empty...
+          </p>
+        )}
       </form>
     </div>
   );
