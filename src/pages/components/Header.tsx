@@ -1,3 +1,4 @@
+import type React from "react";
 import Dictionary from "../../assets/svg/Dictionary.svg?react";
 import FontDropdown from "./FontDropdown";
 import Input from "./Input";
@@ -11,6 +12,14 @@ const Header = ({
   currentFont,
   isDark,
   setIsDark,
+}: {
+  keyword: string;
+  setKeyword: React.Dispatch<React.SetStateAction<string>>;
+  fetchDictionary: (keyword: string) => void;
+  currentFont: string;
+  setCurrentFont: React.Dispatch<React.SetStateAction<string>>;
+  isDark: boolean;
+  setIsDark: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   return (
     <div className="mb-[48px]">

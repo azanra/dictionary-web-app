@@ -10,7 +10,7 @@ const useGetDictionary = () => {
     try {
       setIsLoading(true);
       const response = await fetch(
-        `https://api.dictionaryapi.dev/api/v2/entries/en/${keyword}`
+        `https://api.dictionaryapi.dev/api/v2/entries/en/${keyword}`,
       );
       const result = await response.json();
       const [firstResult] = result;
