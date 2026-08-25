@@ -8,12 +8,12 @@ const useClickOutside = <T extends HTMLElement>(callback: () => void) => {
       if (ref.current && !ref.current.contains(event.target as Node)) {
         callback();
       }
+    };
 
-      document.addEventListener("click", onClickOutside);
+    document.addEventListener("click", onClickOutside);
 
-      return () => {
-        document.removeEventListener("click", onClickOutside);
-      };
+    return () => {
+      document.removeEventListener("click", onClickOutside);
     };
   }, [callback]);
 
