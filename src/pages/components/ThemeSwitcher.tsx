@@ -1,6 +1,9 @@
 import IconMoon from "../../assets/svg/IconMoon.svg?react";
+import { useTheme } from "../../shared/hooks/useTheme";
 
-const ThemeSwitcher = ({ isDark, setIsDark }) => {
+const ThemeSwitcher = () => {
+  const { isDark, setIsDark } = useTheme();
+
   return (
     <div className="flex gap-[16px]">
       <label className="switch ml-[32px]">
