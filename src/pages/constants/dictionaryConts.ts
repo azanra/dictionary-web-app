@@ -1,4 +1,4 @@
-const initialData = {
+const INITIAL_DATA = {
   word: "keyboard",
   phonetic: "/ˈkiːbɔːd/",
   phonetics: [
@@ -68,4 +68,4 @@ const initialData = {
   sourceUrls: ["https://en.wiktionary.org/wiki/keyboard"],
 };
 
-export default initialData;
+export default INITIAL_DATA;

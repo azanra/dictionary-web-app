@@ -1,12 +1,12 @@
 import { useState } from "react";
-import initialData from "../../initialData";
+import INITIAL_DATA from "../constants/dictionaryConts";
 
 const useGetDictionary = () => {
-  const [data, setData] = useState(initialData);
-  const [error, setError] = useState(null);
+  const [data, setData] = useState(INITIAL_DATA);
+  const [error, setError] = useState<Error | undefined>(undefined);
   const [isLoading, setIsLoading] = useState(false);
 
-  const fetchDictionary = async (keyword) => {
+  const fetchDictionary = async (keyword: string) => {
     try {
       setIsLoading(true);
       const response = await fetch(
@@ -16,9 +16,9 @@ const useGetDictionary = () => {
       const [firstResult] = result;
       console.log(result);
       setData(firstResult);
-      setError(null);
+      setError(undefined);
     } catch (error) {
-      setError(error);
+      setError(error as Error);
     } finally {
       setIsLoading(false);
     }
