@@ -4,7 +4,8 @@ import type { IFontContext } from "../interfaces/fontInterface";
 const FontContext = createContext<IFontContext | undefined>(undefined);
 
 const FontProvider = ({ children }: { children: React.ReactNode }) => {
-  const [currentFont, setCurrentFont] = useState("Sans Serif");
+  const [currentFont, setCurrentFont] =
+    useState<IFontContext["currentFont"]>("Sans Serif");
 
   return (
     <FontContext value={{ currentFont, setCurrentFont }}>

@@ -1,6 +1,8 @@
 import type React from "react";
 
+type Font = "Sans Serif" | "Serif" | "Monospace";
+
 export interface IFontContext {
-  currentFont: string;
-  setCurrentFont: React.Dispatch<React.SetStateAction<string>>;
+  currentFont: Font;
+  setCurrentFont: React.Dispatch<React.SetStateAction<Font>>;
 }
