@@ -7,19 +7,9 @@ import ThemeSwitcher from "./ThemeSwitcher";
 const Header = ({
   keyword,
   setKeyword,
-  fetchDictionary,
-  setCurrentFont,
-  currentFont,
-  isDark,
-  setIsDark,
 }: {
   keyword: string;
   setKeyword: React.Dispatch<React.SetStateAction<string>>;
-  fetchDictionary: (keyword: string) => void;
-  currentFont: string;
-  setCurrentFont: React.Dispatch<React.SetStateAction<string>>;
-  isDark: boolean;
-  setIsDark: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   return (
     <div className="mb-[48px]">
@@ -27,17 +17,10 @@ const Header = ({
         <div>
           <Dictionary />
         </div>
-        <FontDropdown
-          setCurrentFont={setCurrentFont}
-          currentFont={currentFont}
-        />
-        <ThemeSwitcher isDark={isDark} setIsDark={setIsDark} />
+        <FontDropdown />
+        <ThemeSwitcher />
       </div>
-      <Input
-        keyword={keyword}
-        setKeyword={setKeyword}
-        fetchDictionary={fetchDictionary}
-      />
+      <Input keyword={keyword} setKeyword={setKeyword} />
     </div>
   );
 };

@@ -1,10 +1,19 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import IconSearch from "../../assets/svg/IconSearch.svg?react";
-import { IsDarkContext } from "../hooks/IsDarkContext";
 
-const Input = ({ keyword, setKeyword, fetchDictionary }) => {
+import { useDictionary } from "../hooks/useDictionary";
+import { useTheme } from "../../shared/hooks/useTheme";
+
+const Input = ({
+  keyword,
+  setKeyword,
+}: {
+  keyword: string;
+  setKeyword: React.Dispatch<React.SetStateAction<string>>;
+}) => {
   const [isValid, setIsValid] = useState(true);
-  const isDark = useContext(IsDarkContext);
+  const { fetchDictionary } = useDictionary();
+  const isDark = useTheme();
 
   const handleSubmit = () => {
     if (keyword.length > 0) {
