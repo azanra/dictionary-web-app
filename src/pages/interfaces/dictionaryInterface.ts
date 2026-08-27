@@ -5,7 +5,7 @@ interface ILicense {
 
 interface IPhonetics {
   text: string;
-  audio: string;
+  audio?: string;
   sourceUrl?: string;
   license?: ILicense;
 }
