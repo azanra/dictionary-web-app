@@ -1,8 +1,9 @@
 import { useState } from "react";
 import INITIAL_DATA from "../constants/dictionaryConts";
+import type { IDictionary } from "../interfaces/dictionaryInterface";
 
 const useGetDictionary = () => {
-  const [data, setData] = useState(INITIAL_DATA);
+  const [data, setData] = useState<IDictionary>(INITIAL_DATA);
   const [error, setError] = useState<Error | undefined>(undefined);
   const [isLoading, setIsLoading] = useState(false);
 
