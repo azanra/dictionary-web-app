@@ -17,7 +17,7 @@ interface IDefinition {
   example?: string;
 }
 
-interface IMeanings {
+export interface IMeanings {
   partOfSpeech: string;
   definitions: IDefinition[];
   synonyms: string[];
