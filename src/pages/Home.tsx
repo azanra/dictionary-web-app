@@ -15,7 +15,7 @@ const Home = () => {
   const [keyword, setKeyword] = useState("keyboard");
   const { data, error, isLoading } = useDictionary();
 
-  const isNotLoading = !data && error ? <Error /> : <Body />;
+  const isNotLoading = !data || error ? <Error /> : <Body />;
 
   return (
     <div
