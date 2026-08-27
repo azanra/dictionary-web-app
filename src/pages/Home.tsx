@@ -15,6 +15,8 @@ const Home = () => {
   const [keyword, setKeyword] = useState("keyboard");
   const { data, error, isLoading } = useDictionary();
 
+  const isNotLoading = !data && error ? <Error /> : <Body />;
+
   return (
     <div
       className={`${
@@ -28,11 +30,11 @@ const Home = () => {
       >
         <div className="w-[40%]">
           <Header keyword={keyword} setKeyword={setKeyword} />
-          {(isLoading && (
+          {isLoading ? (
             <h1 className="font-bold text-xl">Fetching the data...</h1>
-          )) ||
-            (error && <Error />) ||
-            (data && error === null && <Body />)}
+          ) : (
+            isNotLoading
+          )}
         </div>
       </div>
     </div>
