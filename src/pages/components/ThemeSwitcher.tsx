@@ -1,4 +1,4 @@
-import IconMoon from "../../assets/svg/IconMoon.svg?react";
+import IconMoon from "../../assets/images/icon-moon.svg?react";
 import { useTheme } from "../../shared/hooks/useTheme";
 
 const ThemeSwitcher = () => {

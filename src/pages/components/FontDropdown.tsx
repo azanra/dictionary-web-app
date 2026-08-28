@@ -1,4 +1,4 @@
-import ArrowDown from "../../assets/svg/ArrowDown.svg?react";
+import ArrowDown from "../../assets/images/icon-arrow-down.svg?react";
 import Dropdown from "../../shared/components/Dropdown";
 import { useFont } from "../../shared/hooks/useFont";
 import { FONT_OPTIONS } from "../constants/fontConst";

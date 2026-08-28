@@ -1,5 +1,5 @@
 import type React from "react";
-import Dictionary from "../../assets/svg/Dictionary.svg?react";
+import Dictionary from "../../assets/images/logo.svg?react";
 import FontDropdown from "./FontDropdown";
 import Input from "./Input";
 import ThemeSwitcher from "./ThemeSwitcher";

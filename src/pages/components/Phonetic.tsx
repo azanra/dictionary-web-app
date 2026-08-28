@@ -1,4 +1,4 @@
-import IconPlay from "../../assets/svg/IconPlay.svg?react";
+import IconPlay from "../../assets/images/icon-play.svg?react";
 import { useDictionary } from "../hooks/useDictionary";
 import type { IDictionary } from "../interfaces/dictionaryInterface";
 

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import IconSearch from "../../assets/svg/IconSearch.svg?react";
+import IconSearch from "../../assets/images/icon-search.svg?react";
 
 import { useDictionary } from "../hooks/useDictionary";
 import { useTheme } from "../../shared/hooks/useTheme";

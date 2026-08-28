@@ -1,6 +1,6 @@
 import Meaning from "./Meaning";
 import Phonetic from "./Phonetic";
-import IconNewWindow from "../../assets/svg/IconNewWindow.svg?react";
+import IconNewWindow from "../../assets/images/icon-new-window.svg?react";
 
 import { useDictionary } from "../hooks/useDictionary";
 import { useTheme } from "../../shared/hooks/useTheme";
