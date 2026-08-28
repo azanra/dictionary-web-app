@@ -1,26 +1,24 @@
-import { useContext } from "react";
-import { IsDarkContext } from "../hooks/IsDarkContext";
+import { useDictionary } from "../hooks/useDictionary";
+import type { IMeanings } from "../interfaces/dictionaryInterface";
+import { useTheme } from "../../shared/hooks/useTheme";
 
-const Meaning = ({ data, fetchDictionary }) => {
+const Meaning = () => {
+  const { data } = useDictionary();
   const { meanings } = data;
+
   return (
     <div>
       {meanings.map((speech, index) => {
-        return (
-          <MeaningItem
-            speech={speech}
-            key={index}
-            fetchDictionary={fetchDictionary}
-          />
-        );
+        return <MeaningItem speech={speech} key={index} />;
       })}
     </div>
   );
 };
 
-const MeaningItem = ({ speech, fetchDictionary }) => {
+const MeaningItem = ({ speech }: { speech: IMeanings }) => {
   const { partOfSpeech, definitions, synonyms, antonyms } = speech;
-  const isDark = useContext(IsDarkContext);
+  const isDark = useTheme();
+
   return (
     <div>
       <div className="flex items-center mb-[32px]">
@@ -47,21 +45,21 @@ const MeaningItem = ({ speech, fetchDictionary }) => {
           })}
         </ul>
       </div>
-      <MeaningItems
-        meaning={synonyms}
-        meaningType="Synonyms"
-        fetchDictionary={fetchDictionary}
-      />
-      <MeaningItems
-        meaning={antonyms}
-        meaningType="Antonyms"
-        fetchDictionary={fetchDictionary}
-      />
+      <MeaningItems meaning={synonyms} meaningType="Synonyms" />
+      <MeaningItems meaning={antonyms} meaningType="Antonyms" />
     </div>
   );
 };
 
-const MeaningItems = ({ meaning, meaningType, fetchDictionary }) => {
+const MeaningItems = ({
+  meaning,
+  meaningType,
+}: {
+  meaning: string[];
+  meaningType: "Synonyms" | "Antonyms";
+}) => {
+  const { fetchDictionary } = useDictionary();
+
   return (
     <>
       {meaning && meaning.length > 0 && (

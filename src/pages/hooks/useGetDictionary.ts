@@ -1,24 +1,25 @@
 import { useState } from "react";
-import initialData from "../../initialData";
+import INITIAL_DATA from "../constants/dictionaryConts";
+import type { IDictionary } from "../interfaces/dictionaryInterface";
 
 const useGetDictionary = () => {
-  const [data, setData] = useState(initialData);
-  const [error, setError] = useState(null);
+  const [data, setData] = useState<IDictionary>(INITIAL_DATA);
+  const [error, setError] = useState<Error | undefined>(undefined);
   const [isLoading, setIsLoading] = useState(false);
 
-  const fetchDictionary = async (keyword) => {
+  const fetchDictionary = async (keyword: string) => {
     try {
       setIsLoading(true);
       const response = await fetch(
-        `https://api.dictionaryapi.dev/api/v2/entries/en/${keyword}`
+        `https://api.dictionaryapi.dev/api/v2/entries/en/${keyword}`,
       );
       const result = await response.json();
       const [firstResult] = result;
       console.log(result);
       setData(firstResult);
-      setError(null);
+      setError(undefined);
     } catch (error) {
-      setError(error);
+      setError(error as Error);
     } finally {
       setIsLoading(false);
     }
