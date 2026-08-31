@@ -1,0 +1,26 @@
+@font-face {
+  font-family: "Sans";
+  src: url("../assets/fonts/inter/Inter-VariableFont_slnt\,wght.ttf")
+    format("ttf");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Serif";
+  src: url("../assets/fonts/lora/Lora-VariableFont_wght.ttf") format("ttf");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mono";
+  src: url("../assets/fonts/inconsolata/Inconsolata-VariableFont_wdth\,wght.ttf")
+    format("ttf");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
