@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import "../src/styles/Font.css";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --system-ui:
     system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,

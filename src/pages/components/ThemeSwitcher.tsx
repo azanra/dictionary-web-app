@@ -2,7 +2,8 @@ import IconMoon from "../../assets/images/icon-moon.svg?react";
 import { useTheme } from "../../shared/hooks/useTheme";
 
 const ThemeSwitcher = () => {
-  const { isDark, setIsDark } = useTheme();
+  const { theme, setTheme } = useTheme();
+  const isDark = theme === "dark";
 
   return (
     <div className="flex gap-[16px]">
@@ -10,7 +11,7 @@ const ThemeSwitcher = () => {
         <input
           type="checkbox"
           checked={isDark}
-          onChange={(e) => setIsDark(e.target.checked)}
+          onChange={() => setTheme(isDark ? "light" : "dark")}
         />
         <span className="slider"></span>
       </label>
