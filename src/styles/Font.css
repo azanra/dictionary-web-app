@@ -1,3 +1,11 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display-sans: "Sans";
+  --font-display-serif: "Serif";
+  --font-display-mono: "Mono";
+}
+
 @font-face {
   font-family: "Sans";
   src: url("../assets/fonts/inter/Inter-VariableFont_slnt\,wght.ttf")
@@ -23,4 +31,3 @@
   font-style: normal;
   font-display: swap;
 }
-
