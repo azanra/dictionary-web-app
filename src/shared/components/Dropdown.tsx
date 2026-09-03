@@ -34,15 +34,15 @@ const MenuItem = ({
 }) => {
   const { isShown } = useDropdown();
 
-  if (isShown) {
-    return (
-      <div
-        className={`${customClass} absolute top-10 right-5 px-[16px] md:px-[24px] py-[24px] flex flex-col gap-[16px] rounded-(--radius-16) z-1 bg-(--neutral-0) dark:bg-(--neutral-900)`}
-      >
-        {children}
-      </div>
-    );
-  }
+  if (!isShown) return;
+
+  return (
+    <div
+      className={`${customClass} absolute top-10 right-5 px-[16px] md:px-[24px] py-[24px] flex flex-col gap-[16px] rounded-(--radius-16) z-1 bg-(--neutral-0) dark:bg-(--neutral-900)`}
+    >
+      {children}
+    </div>
+  );
 };
 
 const MenuItems = ({
