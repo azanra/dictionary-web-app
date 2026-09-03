@@ -2,7 +2,6 @@ import React from "react";
 
 import useClickOutside from "../hooks/useClickOutside";
 import { DropdownProvider, useDropdown } from "../hooks/useDropdown";
-import { useTheme } from "../hooks/useTheme";
 
 const Dropdown = ({ children }: { children: React.ReactNode }) => {
   const { setIsShown } = useDropdown();
@@ -26,16 +25,19 @@ const Trigger = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-const MenuItem = ({ children }: { children: React.ReactNode }) => {
+const MenuItem = ({
+  children,
+  customClass = "",
+}: {
+  children: React.ReactNode;
+  customClass?: string;
+}) => {
   const { isShown } = useDropdown();
-  const { isDark } = useTheme();
 
   if (isShown) {
     return (
       <div
-        className={`absolute top-10 px-[32px] py-[8px] right-0 shadow-md rounded-xl z-1 ${
-          isDark ? `shadow-purple-600 bg-[#1f1f1f]` : "bg-white"
-        }`}
+        className={`${customClass} absolute top-10 right-5 px-[16px] md:px-[24px] py-[24px] flex flex-col gap-[16px] rounded-(--radius-16) z-1 bg-(--neutral-0) dark:bg-(--neutral-900)`}
       >
         {children}
       </div>
