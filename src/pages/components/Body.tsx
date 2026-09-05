@@ -12,7 +12,7 @@ const Body = () => {
   const { sourceUrls } = data;
 
   return (
-    <div>
+    <div className="px-[24px] md:px-[40px]">
       <Phonetic />
       <Meaning />
       <div className="mb-[10%]">

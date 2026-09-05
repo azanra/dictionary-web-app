@@ -17,7 +17,7 @@ const Home = () => {
     <div
       className={`${fontFamily} bg-(--neutral-0) text-(--neutral-800) dark:bg-(--neutral-950) dark:text-(--neutral-0) flex justify-center items-center`}
     >
-      <div className="min-h-screen md:max-w-[689px] xxl:max-w-[1440px]">
+      <div className="min-h-screen w-full md:max-w-[689px] xxl:max-w-[736px]">
         <Header keyword={keyword} setKeyword={setKeyword} />
         {isLoading ? (
           <h1 className="font-bold text-xl">Fetching the data...</h1>

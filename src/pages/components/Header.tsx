@@ -12,7 +12,7 @@ const Header = ({
   setKeyword: React.Dispatch<React.SetStateAction<string>>;
 }) => {
   return (
-    <div className="p-[24px] flex flex-col gap-[24px] md:gap-[56px] md:pt-[58px] md:pb-[48px]">
+    <div className="px-[24px] pt-[24px] flex flex-col gap-[24px] md:gap-[56px] md:pt-[58px]">
       <div className="flex items-center">
         <Dictionary className="w-[28px] h-[31.5px] md:w-[32px] md:h-[36px]" />
         <FontDropdown />

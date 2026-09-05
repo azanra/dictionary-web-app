@@ -32,6 +32,25 @@
   font-display: swap;
 }
 
+@utility text-preset-1 {
+  font-size: 64px;
+  letter-spacing: 0px;
+  font-weight: bold;
+}
+
+@utility text-preset-1-mobile {
+  font-size: 32px;
+  font-weight: bold;
+  letter-spacing: 0px;
+}
+
+@utility text-preset-2-sans-regular {
+  font-family: "Sans";
+  font-size: 24px;
+  line-height: 120%;
+  letter-spacing: 0px;
+}
+
 @utility text-preset-4-bold {
   font-size: 18px;
   line-height: 133%;
