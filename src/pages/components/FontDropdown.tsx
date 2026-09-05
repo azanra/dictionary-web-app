@@ -7,7 +7,7 @@ import { FONT_OPTIONS } from "../constants/fontConst";
 import dictionaryUtils from "../utils/dictionaryUtils";
 
 const FontDropdown = () => {
-  const { currentFont, fontFamily, setCurrentFont } = useFont();
+  const { currentFont, setCurrentFont } = useFont();
   const { isMobile } = useIsMobileScreen();
 
   return (
@@ -15,9 +15,7 @@ const FontDropdown = () => {
       <Dropdown>
         <Dropdown.Trigger>
           <div className="flex items-center gap-[16px] pr-[16px] md:pr-[24px] border-r border-(--neutral-200) dark:border-(--neutral-0) h-[24px] py-[4px]">
-            <p
-              className={`${fontFamily} text-preset-7-bold md:text-preset-4-bold`}
-            >
+            <p className="text-preset-7-bold md:text-preset-4-bold">
               {currentFont}
             </p>
             <ArrowDown />

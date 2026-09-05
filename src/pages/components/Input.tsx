@@ -2,7 +2,8 @@ import { useState } from "react";
 import IconSearch from "../../assets/images/icon-search.svg?react";
 
 import { useDictionary } from "../hooks/useDictionary";
-import { useTheme } from "../../shared/hooks/useTheme";
+import { useFont } from "../../shared/hooks/useFont";
+import useIsMobileScreen from "../../shared/hooks/useIsMobileScreen";
 
 const Input = ({
   keyword,
@@ -13,7 +14,10 @@ const Input = ({
 }) => {
   const [isValid, setIsValid] = useState(true);
   const { fetchDictionary } = useDictionary();
-  const isDark = useTheme();
+  const { currentFont } = useFont();
+  const { isMobile } = useIsMobileScreen();
+
+  const isMonoMobile = isMobile && currentFont === "Mono";
 
   const handleSubmit = () => {
     if (keyword.length > 0) {
@@ -24,33 +28,27 @@ const Input = ({
     }
   };
   return (
-    <div>
-      <form action={handleSubmit}>
-        <div className="flex relative">
-          <input
-            type="text"
-            name="keyword"
-            id="keyword"
-            value={keyword}
-            onChange={(e) => setKeyword(e.target.value)}
-            className={`${
-              isDark ? "bg-[#1f1f1f]" : "bg-[#f4f4f4]"
-            } flex-1 flex rounded-xl p-[16px] font-bold border-2 border-transparent focus:border-(--purple) focus:outline-none`}
-          />
-          <button
-            type="submit"
-            className="absolute right-5 inset-y-0 cursor-pointer"
-          >
-            <IconSearch />
-          </button>
-        </div>
-        {!isValid && (
-          <p className="text-red-500 ml-[8px] mt-[8px]">
-            Whoops, can't be empty...
-          </p>
-        )}
-      </form>
-    </div>
+    <form action={handleSubmit}>
+      <div className="relative">
+        <input
+          type="text"
+          name="keyword"
+          id="keyword"
+          value={keyword}
+          onChange={(e) => setKeyword(e.target.value)}
+          className={`cursor-pointer text-preset-5-bold-mobile ${isMonoMobile ? "leading-[106%]" : ""} bg-(--neutral-100) dark:bg-(--neutral-900) w-full rounded-(--radius-16) px-[24.5px] py-[14.5px] md:px-[24px] md:py-[20px] focus:outline-1 ${isValid ? "focus:outline-(--purple-500)" : "focus:outline-(--red-500)"}`}
+        />
+        <button
+          type="submit"
+          className="absolute inset-y-0 right-6 cursor-pointer"
+        >
+          <IconSearch />
+        </button>
+      </div>
+      {!isValid && (
+        <p className="text-(--red-500) mt-[8px]">Whoops, can't be empty...</p>
+      )}
+    </form>
   );
 };
 

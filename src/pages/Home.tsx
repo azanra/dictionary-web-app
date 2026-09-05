@@ -1,41 +1,29 @@
 import { useState } from "react";
-import { useTheme } from "../shared/hooks/useTheme";
 import Header from "./components/Header";
-import { useFont } from "../shared/hooks/useFont";
-import dictionaryUtils from "./utils/dictionaryUtils";
 
 import { DictionaryProvider, useDictionary } from "./hooks/useDictionary";
 import Error from "./components/Error";
 import Body from "./components/Body";
+import { useFont } from "../shared/hooks/useFont";
 
 const Home = () => {
-  const { isDark } = useTheme();
-  const { currentFont } = useFont();
-
   const [keyword, setKeyword] = useState("keyboard");
   const { data, error, isLoading } = useDictionary();
+  const { fontFamily } = useFont();
 
   const isNotLoading = !data || error ? <Error /> : <Body />;
 
   return (
     <div
-      className={`${
-        isDark ? "bg-black text-white" : "bg-white text-black"
-      } min-h-screen`}
+      className={`${fontFamily} bg-(--neutral-0) text-(--neutral-800) dark:bg-(--neutral-950) dark:text-(--neutral-0) flex justify-center items-center`}
     >
-      <div
-        className={`${dictionaryUtils.getCurrentFont(
-          currentFont,
-        )} flex justify-center`}
-      >
-        <div className="w-[40%]">
-          <Header keyword={keyword} setKeyword={setKeyword} />
-          {isLoading ? (
-            <h1 className="font-bold text-xl">Fetching the data...</h1>
-          ) : (
-            isNotLoading
-          )}
-        </div>
+      <div className="min-h-screen md:max-w-[689px] xxl:max-w-[1440px]">
+        <Header keyword={keyword} setKeyword={setKeyword} />
+        {isLoading ? (
+          <h1 className="font-bold text-xl">Fetching the data...</h1>
+        ) : (
+          isNotLoading
+        )}
       </div>
     </div>
   );
