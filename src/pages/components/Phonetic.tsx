@@ -44,11 +44,11 @@ const Phonetic = () => {
     >
       <div className="flex flex-col gap-[8px]">
         <h1
-          className={`text-preset-1-mobile md:text-preset-1 ${dynamicClass[currentFont].lineHeight}`}
+          className={`text-preset-1-mobile font-bold md:text-preset-1 ${dynamicClass[currentFont].lineHeight}`}
         >
           {word}
         </h1>
-        <p className="text-(--purple-500) text-preset-4-bold font-normal md:text-preset-2-sans-regular">
+        <p className="text-(--purple-500) text-preset-4 md:text-preset-2-sans">
           {phonetic}
         </p>
       </div>

@@ -15,7 +15,7 @@ const FontDropdown = () => {
       <Dropdown>
         <Dropdown.Trigger>
           <div className="flex items-center gap-[16px] pr-[16px] md:pr-[24px] border-r border-(--neutral-200) dark:border-(--neutral-0) h-[24px] py-[4px]">
-            <p className="text-preset-7-bold md:text-preset-4-bold">
+            <p className="text-preset-7 font-bold md:text-preset-4">
               {currentFont}
             </p>
             <ArrowDown />
@@ -26,8 +26,8 @@ const FontDropdown = () => {
             const activeFont = dictionaryUtils.getFontValue(font.name);
             const isMono =
               font.name === "Mono"
-                ? "text-preset-4-bold"
-                : "text-preset-7-bold";
+                ? "text-preset-4 font-bold"
+                : "text-preset-7 font-bold";
 
             return (
               <Dropdown.MenuItems
@@ -35,7 +35,7 @@ const FontDropdown = () => {
                 onClick={() => setCurrentFont(font.name)}
               >
                 <p
-                  className={`${activeFont} ${isMobile ? isMono : ""} md:text-preset-4-bold w-[90px] text-(--neutral-800) dark:text-(--neutral-0) hover:text-(--purple-500) text-nowrap`}
+                  className={`${activeFont} ${isMobile ? isMono : ""} md:text-preset-4 md:font-bold w-[90px] text-(--neutral-800) dark:text-(--neutral-0) hover:text-(--purple-500) text-nowrap`}
                 >
                   {font.name}
                 </p>
