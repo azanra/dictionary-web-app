@@ -1,12 +1,11 @@
 import type { IFontContext } from "../../shared/interfaces/fontInterface";
-import { FONT_CLASS } from "../constants/fontConst";
+import { FONT_OPTIONS } from "../constants/fontConst";
 
-const dictionaryUtils = (function () {
-  const getCurrentFont = (currentFont: IFontContext["currentFont"]) => {
-    return FONT_CLASS[currentFont];
-  };
+const dictionaryUtils = (() => {
+  const getFontValue = (selectedFont: IFontContext["currentFont"]) =>
+    FONT_OPTIONS.find((font) => font.name === selectedFont)?.value;
 
-  return { getCurrentFont };
+  return { getFontValue };
 })();
 
 export default dictionaryUtils;

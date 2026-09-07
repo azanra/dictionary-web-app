@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import type { IFontContext } from "../interfaces/fontInterface";
+import dictionaryUtils from "../../pages/utils/dictionaryUtils";
 
 const FontContext = createContext<IFontContext | undefined>(undefined);
 
@@ -7,8 +8,10 @@ const FontProvider = ({ children }: { children: React.ReactNode }) => {
   const [currentFont, setCurrentFont] =
     useState<IFontContext["currentFont"]>("Sans Serif");
 
+  const fontFamily = dictionaryUtils.getFontValue(currentFont);
+
   return (
-    <FontContext value={{ currentFont, setCurrentFont }}>
+    <FontContext value={{ currentFont, fontFamily, setCurrentFont }}>
       {children}
     </FontContext>
   );

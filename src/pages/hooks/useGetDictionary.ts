@@ -3,6 +3,7 @@ import INITIAL_DATA from "../constants/dictionaryConts";
 import type { IDictionary } from "../interfaces/dictionaryInterface";
 
 const useGetDictionary = () => {
+  const [keyword, setKeyword] = useState("keyboard");
   const [data, setData] = useState<IDictionary>(INITIAL_DATA);
   const [error, setError] = useState<Error | undefined>(undefined);
   const [isLoading, setIsLoading] = useState(false);
@@ -30,6 +31,8 @@ const useGetDictionary = () => {
     error,
     isLoading,
     fetchDictionary,
+    keyword,
+    setKeyword,
   };
 };
 

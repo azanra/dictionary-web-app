@@ -38,4 +38,6 @@ export interface IDictionaryContext {
   error: Error | undefined;
   isLoading: boolean;
   fetchDictionary: (keyword: string) => Promise<void>;
+  keyword: string;
+  setKeyword: React.Dispatch<React.SetStateAction<string>>;
 }
