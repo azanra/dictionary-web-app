@@ -40,7 +40,9 @@ const Input = () => {
         </button>
       </div>
       {!isValid && (
-        <p className="text-(--red-500) mt-[8px]">Whoops, can't be empty...</p>
+        <p className="text-(--red-500) text-preset-6-mobile md:text-preset-3-regular mt-[8px]">
+          Whoops, can't be empty...
+        </p>
       )}
     </form>
   );
