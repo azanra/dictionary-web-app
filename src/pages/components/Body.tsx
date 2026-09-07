@@ -34,7 +34,7 @@ const Body = () => {
         className={`${dynamicClass[currentFont].sourceContainer} flex flex-col gap-[32px] md:gap-[20px]`}
       >
         <hr className="text-(--neutral-200) dark:text-(--neutral-700)" />
-        <div className="flex flex-col gap-[8px] md:flex-row md:gap-[20px] ">
+        <div className="flex flex-col gap-[8px] md:flex-row md:gap-[20px] md:items-baseline">
           <p
             className={`text-(--neutral-500) underline text-preset-7 ${dynamicClass[currentFont].source}`}
           >

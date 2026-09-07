@@ -20,7 +20,9 @@ const Home = () => {
       <div className="min-h-screen w-full md:max-w-[689px] xxl:max-w-[736px]">
         <Header keyword={keyword} setKeyword={setKeyword} />
         {isLoading ? (
-          <h1 className="font-bold text-xl">Fetching the data...</h1>
+          <p className="font-bold text-preset-7 text-center py-[24px]">
+            Loading...
+          </p>
         ) : (
           isNotLoading
         )}
