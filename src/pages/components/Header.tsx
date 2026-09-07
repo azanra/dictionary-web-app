@@ -1,16 +1,9 @@
-import type React from "react";
 import Dictionary from "../../assets/images/logo.svg?react";
 import FontDropdown from "./FontDropdown";
 import Input from "./Input";
 import ThemeSwitcher from "./ThemeSwitcher";
 
-const Header = ({
-  keyword,
-  setKeyword,
-}: {
-  keyword: string;
-  setKeyword: React.Dispatch<React.SetStateAction<string>>;
-}) => {
+const Header = () => {
   return (
     <div className="px-[24px] pt-[24px] flex flex-col gap-[24px] md:gap-[56px] md:pt-[58px]">
       <div className="flex items-center">
@@ -19,7 +12,7 @@ const Header = ({
         <ThemeSwitcher />
       </div>
 
-      <Input keyword={keyword} setKeyword={setKeyword} />
+      <Input />
     </div>
   );
 };

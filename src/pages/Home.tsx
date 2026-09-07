@@ -7,7 +7,6 @@ import Body from "./components/Body";
 import { useFont } from "../shared/hooks/useFont";
 
 const Home = () => {
-  const [keyword, setKeyword] = useState("keyboard");
   const { data, error, isLoading } = useDictionary();
   const { fontFamily } = useFont();
 
@@ -18,7 +17,7 @@ const Home = () => {
       className={`${fontFamily} bg-(--neutral-0) text-(--neutral-800) dark:bg-(--neutral-950) dark:text-(--neutral-0) flex justify-center items-center`}
     >
       <div className="min-h-screen w-full md:max-w-[689px] xxl:max-w-[736px]">
-        <Header keyword={keyword} setKeyword={setKeyword} />
+        <Header />
         {isLoading ? (
           <p className="font-bold text-preset-7 text-center py-[24px]">
             Loading...

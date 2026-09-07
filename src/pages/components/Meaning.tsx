@@ -89,7 +89,7 @@ const MeaningItems = ({
   meaning: string[];
   meaningType: "Synonyms" | "Antonyms";
 }) => {
-  const { fetchDictionary } = useDictionary();
+  const { setKeyword, fetchDictionary } = useDictionary();
   const { currentFont } = useFont();
 
   const dynamicClass = {
@@ -106,6 +106,11 @@ const MeaningItems = ({
 
   const textClass = `text-preset-5-mobile ${dynamicClass[currentFont].meaningType}`;
 
+  const handleClick = (mean: string) => {
+    fetchDictionary(mean);
+    setKeyword(mean);
+  };
+
   return (
     <>
       {meaning && meaning.length > 0 && (
@@ -115,9 +120,9 @@ const MeaningItems = ({
             {meaning.map((mean, index) => {
               return (
                 <button
-                  onClick={() => fetchDictionary(mean)}
+                  onClick={() => handleClick(mean)}
                   key={index}
-                  className={`text-(--purple-500) cursor-pointer ${textClass} font-bold`}
+                  className={`text-(--purple-500) cursor-pointer ${textClass} font-bold hover:underline`}
                 >
                   {" "}
                   {mean}

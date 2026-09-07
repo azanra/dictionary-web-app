@@ -5,15 +5,9 @@ import { useDictionary } from "../hooks/useDictionary";
 import { useFont } from "../../shared/hooks/useFont";
 import useIsMobileScreen from "../../shared/hooks/useIsMobileScreen";
 
-const Input = ({
-  keyword,
-  setKeyword,
-}: {
-  keyword: string;
-  setKeyword: React.Dispatch<React.SetStateAction<string>>;
-}) => {
+const Input = () => {
   const [isValid, setIsValid] = useState(true);
-  const { fetchDictionary } = useDictionary();
+  const { keyword, setKeyword, fetchDictionary } = useDictionary();
   const { currentFont } = useFont();
   const { isMobile } = useIsMobileScreen();
 

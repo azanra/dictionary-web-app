@@ -7,10 +7,13 @@ const DictionaryContext = createContext<IDictionaryContext | undefined>(
 );
 
 const DictionaryProvider = ({ children }: { children: React.ReactNode }) => {
-  const { data, error, isLoading, fetchDictionary } = useGetDictionary();
+  const { data, error, isLoading, fetchDictionary, keyword, setKeyword } =
+    useGetDictionary();
 
   return (
-    <DictionaryContext value={{ data, error, isLoading, fetchDictionary }}>
+    <DictionaryContext
+      value={{ data, error, isLoading, fetchDictionary, keyword, setKeyword }}
+    >
       {children}
     </DictionaryContext>
   );
