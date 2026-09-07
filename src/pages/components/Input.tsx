@@ -30,7 +30,7 @@ const Input = () => {
           id="keyword"
           value={keyword}
           onChange={(e) => setKeyword(e.target.value)}
-          className={`cursor-pointer text-preset-5-mobile font-bold ${isMonoMobile ? "leading-[106%]" : ""} bg-(--neutral-100) dark:bg-(--neutral-900) w-full rounded-(--radius-16) px-[24.5px] py-[14.5px] md:px-[24px] md:py-[20px] focus:outline-1 ${isValid ? "focus:outline-(--purple-500)" : "focus:outline-(--red-500)"}`}
+          className={`cursor-pointer text-preset-5-mobile font-bold ${isMonoMobile ? "leading-[106%]" : ""} bg-(--neutral-100) dark:bg-(--neutral-900) dark:scheme-dark  w-full rounded-(--radius-16) px-[24.5px] py-[14.5px] md:px-[24px] md:py-[20px] focus:outline-1 ${isValid ? "focus:outline-(--purple-500)" : "focus:outline-(--red-500)"}`}
         />
         <button
           type="submit"
