@@ -54,7 +54,7 @@ const Phonetic = () => {
       </div>
       <div>
         <button onClick={playAudio} className="cursor-pointer">
-          <IconPlay className="w-[48px] md:w-[75px]" />
+          <IconPlay className="w-[48px] md:w-[75px] group [&_circle]:group-hover:opacity-100 [&_path]:group-hover:fill-(--neutral-0)" />
         </button>
       </div>
     </div>
