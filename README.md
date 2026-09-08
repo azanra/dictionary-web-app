@@ -30,9 +30,9 @@ Users should be able to:
 
 ### Screenshot
 
-![](./src/assets/darkDict-ui.png)
+![](./src/assets/screenshots/darkDict-ui.png)
 
-![](./src/assets/whiteDict-ui.png)
+![](./src/assets/screenshots/whiteDict-ui.png)
 
 ### Links
 
