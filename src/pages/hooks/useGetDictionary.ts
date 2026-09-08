@@ -1,6 +1,7 @@
 import { useState } from "react";
-import INITIAL_DATA from "../constants/dictionaryConts";
+
 import type { IDictionary } from "../interfaces/dictionaryInterface";
+import INITIAL_DATA from "../constants/dictionaryConst";
 
 const useGetDictionary = () => {
   const [keyword, setKeyword] = useState("keyboard");
