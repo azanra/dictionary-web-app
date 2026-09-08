@@ -8,14 +8,8 @@ const Phonetic = () => {
   const { data } = useDictionary();
   const { word, phonetic, phonetics } = data;
 
-  const getPhonetics = (phonetics: IDictionary["phonetics"]) => {
-    const phoneticData = phonetics.find((phonetic) => {
-      if (phonetic.audio) {
-        return phonetic;
-      }
-    });
-    return phoneticData;
-  };
+  const getPhonetics = (phonetics: IDictionary["phonetics"]) =>
+    phonetics.find(({ audio }) => Boolean(audio));
 
   const playAudio = () => {
     const { audio: audioLink } = getPhonetics(phonetics) || {};
