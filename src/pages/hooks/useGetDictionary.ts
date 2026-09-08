@@ -14,9 +14,12 @@ const useGetDictionary = () => {
       const response = await fetch(
         `https://api.dictionaryapi.dev/api/v2/entries/en/${keyword}`,
       );
+      if (!response.ok) {
+        throw new Error(`Response state: ${response.status}`);
+      }
+
       const result = await response.json();
       const [firstResult] = result;
-      console.log(result);
       setData(firstResult);
       setError(undefined);
     } catch (error) {
