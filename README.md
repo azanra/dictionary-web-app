@@ -308,6 +308,53 @@ const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
 };
 ```
 
+To make it explicit component is part of it parent, we can use dot notation to group component together
+
+```js
+const Dropdown = ({ children }: { children: React.ReactNode }) => {
+  const { setIsShown } = useDropdown();
+
+  const refWrapper = useClickOutside<HTMLDivElement>(() => setIsShown(false));
+
+  return (
+    <div className="w-fit relative" ref={refWrapper}>
+      {children}
+    </div>
+  );
+};
+
+const Trigger = ({ children }: { children: React.ReactNode }) => {
+  const { isShown, setIsShown } = useDropdown();
+
+  return (
+    <div className="cursor-pointer" onClick={() => setIsShown(!isShown)}>
+      {children}
+    </div>
+  );
+};
+
+
+DropdownWrapper.Trigger = Trigger;
+DropdownWrapper.MenuItem = MenuItem;
+DropdownWrapper.MenuItems = MenuItems;
+
+export default DropdownWrapper;
+```
+
+To access those component is the same as normally accessing children of an object.
+
+```js
+      <Dropdown>
+        <Dropdown.Trigger>
+          <div className="flex items-center gap-[16px] pr-[16px] md:pr-[24px] border-r border-(--neutral-200) dark:border-(--neutral-0) h-[24px] py-[4px]">
+            <p className="text-preset-7 font-bold md:text-preset-4">
+              {currentFont}
+            </p>
+            <ArrowDown />
+          </div>
+        </Dropdown.Trigger>
+```
+
 - Replace dictionary API with my own API to ensure uptime
 
 ### Useful resources
