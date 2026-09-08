@@ -14,8 +14,9 @@ const Input = () => {
   const isMonoMobile = isMobile && currentFont === "Mono";
 
   const handleSubmit = () => {
-    if (keyword.length > 0) {
-      fetchDictionary(keyword);
+    const currentKeyword = keyword.trim();
+    if (currentKeyword.length > 0) {
+      fetchDictionary(currentKeyword);
       setIsValid(true);
     } else {
       setIsValid(false);
