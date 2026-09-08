@@ -13,6 +13,8 @@ const Phonetic = () => {
 
   const playAudio = () => {
     const { audio: audioLink } = getPhonetics(phonetics) || {};
+    if (!audioLink) return;
+
     const audio = new Audio(audioLink);
     audio.play();
   };
