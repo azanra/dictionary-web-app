@@ -27,7 +27,7 @@ const Body = () => {
   };
 
   return (
-    <div className="px-[24px] md:px-[40px]">
+    <main className="px-[24px] md:px-[40px]">
       <Phonetic />
       <Meaning />
       <div
@@ -59,7 +59,7 @@ const Body = () => {
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

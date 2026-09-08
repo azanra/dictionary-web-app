@@ -21,9 +21,9 @@ const Trigger = ({ children }: { children: React.ReactNode }) => {
   const { isShown, setIsShown } = useDropdown();
 
   return (
-    <div className="cursor-pointer" onClick={() => setIsShown(!isShown)}>
+    <button className="cursor-pointer" onClick={() => setIsShown(!isShown)}>
       {children}
-    </div>
+    </button>
   );
 };
 
@@ -57,7 +57,7 @@ const MenuItems = ({
   const { isShown, setIsShown } = useDropdown();
 
   return (
-    <div
+    <button
       className="cursor-pointer"
       onClick={() => {
         setIsShown(!isShown);
@@ -65,7 +65,7 @@ const MenuItems = ({
       }}
     >
       {children}
-    </div>
+    </button>
   );
 };
 

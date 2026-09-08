@@ -35,7 +35,7 @@ const FontDropdown = () => {
                 onClick={() => setCurrentFont(font.name)}
               >
                 <p
-                  className={`${activeFont} ${isMobile ? isMono : ""} md:text-preset-4 md:font-bold w-[90px] text-(--neutral-800) dark:text-(--neutral-0) hover:text-(--purple-500) text-nowrap`}
+                  className={`${activeFont} ${isMobile ? isMono : ""} md:text-preset-4 md:font-bold w-[90px] text-(--neutral-800) dark:text-(--neutral-0) hover:text-(--purple-500) text-nowrap text-start`}
                 >
                   {font.name}
                 </p>
