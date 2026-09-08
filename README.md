@@ -59,7 +59,7 @@ const useGetDictionary = () => {
     try {
       setIsLoading(true);
       const response = await fetch(
-        `https://api.dictionaryapi.dev/api/v2/entries/en/${keyword}`
+        `https://api.dictionaryapi.dev/api/v2/entries/en/${keyword}`,
       );
       const result = await response.json();
       const [firstResult] = result;
@@ -113,7 +113,7 @@ And for the font dropdown, i need to create three different section, which is th
         <DropdownMenuItems key={font} onClick={() => setCurrentFont(font)}>
           <p
             className={`${dictionaryUtils.getCurrentFont(
-              font
+              font,
             )} font-bold py-[8px] hover:text-(--purple)`}
           >
             {font}
@@ -195,8 +195,124 @@ const Input = ({ keyword, setKeyword, fetchDictionary }) => {
 
 - Convert it to typescript
 
+(Convert to typescript)[https://github.com/azanra/dictionary-web-app/pull/1]
+
+Adding type to props component and convert existing context to context provider and consumer pattern
+
+```js
+import { createContext, useContext } from "react";
+import useGetDictionary from "./useGetDictionary";
+import type { IDictionaryContext } from "../interfaces/dictionaryInterface";
+
+const DictionaryContext = createContext<IDictionaryContext | undefined>(
+  undefined,
+);
+
+const DictionaryProvider = ({ children }: { children: React.ReactNode }) => {
+  const { data, error, isLoading, fetchDictionary } = useGetDictionary();
+
+  return (
+    <DictionaryContext value={{ data, error, isLoading, fetchDictionary }}>
+      {children}
+    </DictionaryContext>
+  );
+};
+
+const useDictionary = () => {
+  const context = useContext(DictionaryContext);
+  if (!context) {
+    throw new Error("useDictionary must be used within a DictionaryProvider");
+  }
+
+  return context;
+};
+
+export { DictionaryProvider, useDictionary };
+```
+
+To provide and consume the data would be like this
+
+```js
+const HomeWrapper = () => {
+  return (
+    <DictionaryProvider>
+      <Home />
+    </DictionaryProvider>
+  );
+};
+
+export default HomeWrapper;
+```
+
+Wrapper is used so that home component can consume the data immediately, by setting it as default export we can call the HomeWrapper component and rename it to Home instead.
+
+```js
+const Home = () => {
+  const { data, error, isLoading } = useDictionary();
+  const { fontFamily } = useFont();
+
+  const isNotLoading = !data || error ? <Error /> : <Body />;
+
+  return (
+    <div
+      className={`${fontFamily} bg-(--neutral-0) text-(--neutral-800) dark:bg-(--neutral-950) dark:text-(--neutral-0) flex justify-center items-center`}
+    >
+      <div className="min-h-screen w-full md:max-w-[689px] xxl:max-w-[736px]">
+        <Header />
+        {isLoading ? (
+          <p className="font-bold text-preset-7 text-center py-[24px]">
+            Loading...
+          </p>
+        ) : (
+          isNotLoading
+        )}
+      </div>
+    </div>
+  );
+};
+```
+
+To check user theme preference, we can use `prefers-color-scheme`, and access it through `window.matchMedia`.
+to use dark mode in tailwind first declare `@custom-variant dark (&:where(.dark, .dark *))`, it will check in the `root` element whether `dark` class is present, if it is then use dark theme else use default theme.
+
+```js
+const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
+  const [theme, setTheme] = useState<IThemeContext["theme"]>("light");
+
+  const handleUpdateTheme = (currentTheme: IThemeContext["theme"]) => {
+    localStorage.setItem("theme", currentTheme);
+    document.documentElement.classList.remove("light", "dark");
+    document.documentElement.classList.add(currentTheme);
+    setTheme(currentTheme);
+  };
+
+  useEffect(() => {
+    const localTheme = localStorage.getItem("theme") as "light" | "dark" | null;
+    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
+      .matches
+      ? "dark"
+      : "light";
+
+    const currentTheme = localTheme ?? systemTheme;
+
+    document.documentElement.classList.remove("light", "dark");
+    document.documentElement.classList.add(currentTheme);
+    setTheme(currentTheme);
+  }, []);
+
+  return (
+    <ThemeContext value={{ theme, setTheme: handleUpdateTheme }}>
+      {children}
+    </ThemeContext>
+  );
+};
+```
+
+- Replace dictionary API with my own API to ensure uptime
+
 ### Useful resources
 
 - [Submit a form with data using a custom React hook](https://stackoverflow.com/questions/65210569/submit-a-form-with-data-using-a-custom-react-hook) - On how creating custom hooks for the form submit
 - [How to handle click outside a div in React with a custom hook](https://medium.com/geekculture/how-to-handle-click-outside-a-div-in-react-d2283dc4ed57) - On how to close the dropdown on outside click
 - [React wait for fetch data as part of custom hook](https://stackoverflow.com/questions/67822971/react-wait-for-fetch-data-as-part-of-custom-hook) - On how to add loading flag on fetching (im not sure about this one)
+- [Dark Mode in React: A Scalable Theme System with Tailwind](https://medium.com/@roman_fedyskyi/dark-mode-in-react-a-scalable-theme-system-with-tailwind-d14e9c1afd1a) - On how to implement dark theme that is scalable
