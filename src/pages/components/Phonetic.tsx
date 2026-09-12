@@ -44,7 +44,7 @@ const Phonetic = () => {
         >
           {word}
         </h1>
-        <p className="text-(--purple-500) text-preset-4 md:text-preset-2-sans">
+        <p className="text-(--purple-500) text-preset-4 md:text-preset-2">
           {phonetic}
         </p>
       </div>

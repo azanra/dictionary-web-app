@@ -51,7 +51,7 @@ const MeaningItem = ({ speech }: { speech: IMeanings }) => {
         <hr className="w-full text-(--neutral-200) dark:text-(--neutral-700)" />
       </div>
       <p
-        className={`text-preset-5-mobile md:text-preset-3-regular ${dynamicClass[currentFont].meaning} mb-[24px]`}
+        className={`text-preset-5-mobile md:text-preset-3 ${dynamicClass[currentFont].meaning} mb-[24px]`}
       >
         Meaning
       </p>
