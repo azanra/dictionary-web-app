@@ -1,6 +1,7 @@
 import { useState } from "react";
-import INITIAL_DATA from "../constants/dictionaryConts";
+
 import type { IDictionary } from "../interfaces/dictionaryInterface";
+import INITIAL_DATA from "../constants/dictionaryConst";
 
 const useGetDictionary = () => {
   const [keyword, setKeyword] = useState("keyboard");
@@ -14,9 +15,12 @@ const useGetDictionary = () => {
       const response = await fetch(
         `https://api.dictionaryapi.dev/api/v2/entries/en/${keyword}`,
       );
+      if (!response.ok) {
+        throw new Error(`Response state: ${response.status}`);
+      }
+
       const result = await response.json();
       const [firstResult] = result;
-      console.log(result);
       setData(firstResult);
       setError(undefined);
     } catch (error) {

@@ -14,8 +14,9 @@ const Input = () => {
   const isMonoMobile = isMobile && currentFont === "Mono";
 
   const handleSubmit = () => {
-    if (keyword.length > 0) {
-      fetchDictionary(keyword);
+    const currentKeyword = keyword.trim();
+    if (currentKeyword.length > 0) {
+      fetchDictionary(currentKeyword);
       setIsValid(true);
     } else {
       setIsValid(false);
@@ -40,7 +41,7 @@ const Input = () => {
         </button>
       </div>
       {!isValid && (
-        <p className="text-(--red-500) text-preset-6-mobile md:text-preset-3-regular mt-[8px]">
+        <p className="text-(--red-500) text-preset-6-mobile md:text-preset-3 mt-[8px]">
           Whoops, can't be empty...
         </p>
       )}

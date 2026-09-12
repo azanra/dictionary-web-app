@@ -8,8 +8,9 @@
 
 @font-face {
   font-family: "Sans";
-  src: url("../assets/fonts/inter/Inter-VariableFont_slnt\,wght.ttf")
-    format("ttf");
+  src:
+    url("../assets/fonts/convert/Inter-Regular.woff2") format("woff2"),
+    url(../assets//fonts/convert/Inter-Regular.woff) format("woff");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -17,7 +18,9 @@
 
 @font-face {
   font-family: "Serif";
-  src: url("../assets/fonts/lora/Lora-VariableFont_wght.ttf") format("ttf");
+  src:
+    url("../assets/fonts/convert/Lora-Regular.woff2") format("woff2"),
+    url("../assets/fonts/convert/Lora-Regular.woff") format("woff");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -25,8 +28,9 @@
 
 @font-face {
   font-family: "Mono";
-  src: url("../assets/fonts/inconsolata/Inconsolata-VariableFont_wdth\,wght.ttf")
-    format("ttf");
+  src:
+    url("../assets/fonts/convert/Inconsolata-Regular.woff2") format("woff2"),
+    url("../assets/fonts/convert/Inconsolata-Regular.woff") format("woff");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -48,7 +52,7 @@
   letter-spacing: 0px;
 }
 
-@utility text-preset-3-regular {
+@utility text-preset-3 {
   font-size: 20px;
   letter-spacing: 0px;
 }

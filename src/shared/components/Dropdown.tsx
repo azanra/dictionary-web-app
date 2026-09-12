@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 
 import useClickOutside from "../hooks/useClickOutside";
 import { DropdownProvider, useDropdown } from "../hooks/useDropdown";
@@ -6,7 +6,9 @@ import { DropdownProvider, useDropdown } from "../hooks/useDropdown";
 const Dropdown = ({ children }: { children: React.ReactNode }) => {
   const { setIsShown } = useDropdown();
 
-  const refWrapper = useClickOutside<HTMLDivElement>(() => setIsShown(false));
+  const handleClick = useCallback(() => setIsShown(false), []);
+
+  const refWrapper = useClickOutside<HTMLDivElement>(handleClick);
 
   return (
     <div className="w-fit relative" ref={refWrapper}>
@@ -19,9 +21,9 @@ const Trigger = ({ children }: { children: React.ReactNode }) => {
   const { isShown, setIsShown } = useDropdown();
 
   return (
-    <div className="cursor-pointer" onClick={() => setIsShown(!isShown)}>
+    <button className="cursor-pointer" onClick={() => setIsShown(!isShown)}>
       {children}
-    </div>
+    </button>
   );
 };
 
@@ -55,7 +57,7 @@ const MenuItems = ({
   const { isShown, setIsShown } = useDropdown();
 
   return (
-    <div
+    <button
       className="cursor-pointer"
       onClick={() => {
         setIsShown(!isShown);
@@ -63,7 +65,7 @@ const MenuItems = ({
       }}
     >
       {children}
-    </div>
+    </button>
   );
 };
 

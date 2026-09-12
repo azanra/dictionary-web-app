@@ -8,17 +8,13 @@ const Phonetic = () => {
   const { data } = useDictionary();
   const { word, phonetic, phonetics } = data;
 
-  const getPhonetics = (phonetics: IDictionary["phonetics"]) => {
-    const phoneticData = phonetics.find((phonetic) => {
-      if (phonetic.audio) {
-        return phonetic;
-      }
-    });
-    return phoneticData;
-  };
+  const getPhonetics = (phonetics: IDictionary["phonetics"]) =>
+    phonetics.find(({ audio }) => Boolean(audio));
 
   const playAudio = () => {
     const { audio: audioLink } = getPhonetics(phonetics) || {};
+    if (!audioLink) return;
+
     const audio = new Audio(audioLink);
     audio.play();
   };
@@ -48,7 +44,7 @@ const Phonetic = () => {
         >
           {word}
         </h1>
-        <p className="text-(--purple-500) text-preset-4 md:text-preset-2-sans">
+        <p className="text-(--purple-500) text-preset-4 md:text-preset-2">
           {phonetic}
         </p>
       </div>

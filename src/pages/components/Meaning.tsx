@@ -41,17 +41,17 @@ const MeaningItem = ({ speech }: { speech: IMeanings }) => {
   };
 
   return (
-    <div>
+    <section>
       <div className="flex items-center mb-[32px] md:mb-[40px] gap-[20px]">
-        <h1
+        <h2
           className={`text-preset-4 font-bold md:text-preset-2 ${dynamicClass[currentFont].speech}`}
         >
           {partOfSpeech}
-        </h1>
+        </h2>
         <hr className="w-full text-(--neutral-200) dark:text-(--neutral-700)" />
       </div>
       <p
-        className={`text-preset-5-mobile md:text-preset-3-regular ${dynamicClass[currentFont].meaning} mb-[24px]`}
+        className={`text-preset-5-mobile md:text-preset-3 ${dynamicClass[currentFont].meaning} mb-[24px]`}
       >
         Meaning
       </p>
@@ -78,7 +78,7 @@ const MeaningItem = ({ speech }: { speech: IMeanings }) => {
       </div>
       <MeaningItems meaning={synonyms} meaningType="Synonyms" />
       <MeaningItems meaning={antonyms} meaningType="Antonyms" />
-    </div>
+    </section>
   );
 };
 

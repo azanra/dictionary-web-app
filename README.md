@@ -30,12 +30,13 @@ Users should be able to:
 
 ### Screenshot
 
-![](./src/assets/darkDict-ui.png)
+![](./src/assets/screenshots/darkDict-ui.png)
 
-![](./src/assets/whiteDict-ui.png)
+![](./src/assets/screenshots/whiteDict-ui.png)
 
 ### Links
 
+- Solution URL: [Dictionary React App](https://www.frontendmentor.io/solutions/dictionary-react-app-zs_aiWc03V)
 - Live Site URL: [Live Preview](https://azanra.github.io/dictionary-web-app/)
 
 ## My process
@@ -195,7 +196,7 @@ const Input = ({ keyword, setKeyword, fetchDictionary }) => {
 
 - Convert it to typescript
 
-(Convert to typescript)[https://github.com/azanra/dictionary-web-app/pull/1]
+[Convert to typescript](https://github.com/azanra/dictionary-web-app/pull/1)
 
 Adding type to props component and convert existing context to context provider and consumer pattern
 
